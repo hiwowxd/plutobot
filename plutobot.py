@@ -16,7 +16,7 @@ import requests
 import signal
 
 # ==================== CONFIGURATION ====================
-TOKEN = ""  # You'll put this in environment variables
+TOKEN = ""  
 PREFIX = "."
 
 # Setup logging

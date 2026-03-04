@@ -12,28 +12,28 @@ check_success() {
     fi
 }
 
-# 1. Force remove any existing problem packages
+# 1. Clean old packages
 echo "📦 Cleaning old packages..."
 pip uninstall discord.py-selfbot discord.py-self protobuf -y > /dev/null 2>&1
 pip cache purge > /dev/null 2>&1
 echo "✅ Cleaned"
 
-# 2. Install core dependencies FIRST (this is often the fix)
+# 2. Install core build tools
 echo "📦 Installing core build tools..."
 pip install --no-cache-dir wheel setuptools --upgrade
 check_success
 
-# 3. Install protobuf separately (known problematic dependency)
+# 3. Install protobuf
 echo "📦 Installing protobuf..."
 pip install --no-cache-dir protobuf==3.20.3
 check_success
 
-# 4. Install the main package with verbose output
-echo "📦 Installing discord.py-selfbot (this may take a moment)..."
-pip install --no-cache-dir --verbose discord.py-selfbot==2.0.0
+# 4. Install the CORRECT package from GitHub (THIS IS THE FIX)
+echo "📦 Installing discord.py-self from GitHub..."
+pip install --no-cache-dir git+https://github.com/dolfies/discord.py-self.git
 check_success
 
-# 5. Install remaining requirements
+# 5. Install remaining packages
 echo "📦 Installing other packages..."
 pip install --no-cache-dir colorama==0.4.6 aiohttp==3.9.1 requests==2.31.0
 check_success

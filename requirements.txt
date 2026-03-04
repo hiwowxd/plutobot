@@ -1,5 +1,4 @@
-discord.py-selfbot==1.9.2
-aiohttp==3.9.1
+discum==1.4.1
 colorama==0.4.6
-asyncio==3.4.3
+aiohttp==3.9.1
 requests==2.31.0
